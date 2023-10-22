@@ -20,26 +20,17 @@ export default function AdminLogin({ loading }) {
   );
 
   const login = async () => {
-    try {
-      const response = await loginHook();
-      if (response.status === 200) {
-        localStorage.setItem("adminToken", response.data);
-
-        history.push("/admin/dashboard");
-        toast.success("Logged in successfully!!", { autoClose: 1000 });
-      }
-    } catch (error) {
-      switch (error.message) {
-        case "400":
-          toast.error("Invalid Pin", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: "false",
-          });
-          break;
-        default:
-          toast.error("Something went wrong");
-      }
+    // Hardcoded dummy pin
+    if (pin === "123456789") {
+      localStorage.setItem("adminToken", "dummyToken");
+      history.push("/admin/dashboard");
+      toast.success("Logged in successfully!!", { autoClose: 1000 });
+    } else {
+      toast.error("Invalid Pin", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: "false",
+      });
     }
   };
 
@@ -69,7 +60,6 @@ export default function AdminLogin({ loading }) {
         >
           Login
         </div>
-
         <input
           type="password"
           className="input"
@@ -79,12 +69,13 @@ export default function AdminLogin({ loading }) {
           required
         />
         <button
-  type="submit"
-  className="btn btn-primary btn-block"
-  disabled={pin === "" || loading}
->
-  {loading ? "Logging in..." : "Log in"}
-</button>
+          type="submit"
+          className="btn btn-primary btn-block"
+          disabled={pin === "" || loading}
+          onClick={() => login()}
+        >
+          {loading ? "Logging in..." : "Log in"}
+        </button>
       </form>
     </div>
   );
