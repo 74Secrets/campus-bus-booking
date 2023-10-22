@@ -2,8 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import TypingEffect from "react-typing-effect";
 import admin from "../../assets/admin.svg";
-import student from "../../assets/student.svg";
 import driver from "../../assets/driver.svg";
+import student from "../../assets/student.svg";
 
 export default function Home() {
 	const history = useHistory();
@@ -23,9 +23,9 @@ export default function Home() {
 			>
 				<TypingEffect
 					text={[
-						"Federal Polytechnic Nasarawa",
+						"iBus Booking Application",
 						"Project By...",
-						"Yakubu Abraham",
+						"Joshua Gathere",
 						"BookBus",
 						"Booking Made Easy😎😎",
 					]}
@@ -36,7 +36,7 @@ export default function Home() {
 
 			<p
 				style={{
-					fontFamily: "flamenco",
+					fontFamily: "Poppins",
 					fontSize: "24px",
 					fontWeight: "bolder",
 					margin: "15px",
